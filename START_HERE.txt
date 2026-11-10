@@ -1,0 +1,22 @@
+CUSTOMER CHURN PREDICTION SYSTEM - VS CODE QUICK START
+
+1. Extract the ZIP into a folder.
+2. Open VS Code > File > Open Folder > customer_churn_prediction_system.
+3. Open the VS Code terminal.
+4. Run:
+    python -m venv .venv
+    source .venv/bin/activate       (Linux/macOS)
+    .venv\Scripts\activate       (Windows Command Prompt)
+    python -m pip install -r requirements.txt
+    python -m uvicorn app.main:app --reload
+5. Visit http://127.0.0.1:8000
+6. For API docs visit http://127.0.0.1:8000/docs
+
+No dataset required to run the existing pretrained model.
+The FULL bundle also includes data/raw/train.csv and data/raw/test.csv for retraining.
+Run tests with: python -m pytest -q
+
+MODEL LIMITATION:
+Validation accuracy is 99.97% but external supplied test accuracy is only
+50.33%, so predictions are for education/demonstration and not production.
+Read reports/model_evaluation.md for detailed results.

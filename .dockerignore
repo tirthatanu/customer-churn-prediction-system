@@ -1,0 +1,11 @@
+.git
+.gitignore
+__pycache__
+.pytest_cache
+*.pyc
+.venv
+venv
+runtime
+screenshots
+*.zip
+data/raw/

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <meta name="description" content="Interactive machine learning dashboard to predict customer churn, estimate risk and view model insights." />
+  <title>Customer Churn Prediction System</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/static/style.css" />
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <div class="top-stripe"></div>
+  <header class="navbar">
+    <div class="nav-wrap">
+      <a class="brand" href="#home" aria-label="Customer Churn Prediction System home"><span class="brand-icon">C<span class="brand-dot">.</span></span><span>churn<span class="brand-light">/ml</span></span></a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a class="nav-active" href="#home">Overview</a>
+        <a href="#predict">Predict</a>
+        <a href="#insights">Model insights</a>
+      </nav>
+      <div class="nav-status" id="api-status"><span class="status-dot"></span><span>Connecting to API</span></div>
+    </div>
+  </header>
+
+  <main id="home" class="container">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow"><span class="eyebrow-symbol">✦</span> END-TO-END MACHINE LEARNING <span class="eyebrow-version">V 1.0</span></span>
+        <h1>Customer Churn<br /><em>Prediction System</em></h1>
+        <p>Turn customer behavior into clear retention insights. Estimate churn probability in seconds with a trained machine learning model.</p>
+        <div class="hero-tags"><span><span class="check">✓</span> Scikit-learn ML</span><span><span class="check">✓</span> FastAPI powered</span><span><span class="check">✓</span> Real-time predictions</span></div>
+      </div>
+      <div class="hero-graphic" aria-hidden="true">
+        <div class="hero-orb orb-one"></div><div class="hero-orb orb-two"></div>
+        <div class="signal-card"><div class="signal-top"><span>RETENTION SIGNAL</span><span class="signal-pulse">● LIVE</span></div><div class="signal-visual"><span class="signal-bar s1"></span><span class="signal-bar s2"></span><span class="signal-bar s3"></span><span class="signal-bar s4"></span><span class="signal-bar s5"></span><span class="signal-bar s6"></span><span class="signal-bar s7"></span><span class="signal-bar s8"></span><span class="signal-bar s9"></span></div><div class="signal-bottom"><span>Identify risk before customers leave</span><span class="arrow">↗</span></div></div>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Model performance summary">
+      <article class="metric"><div class="metric-icon icon-blue">◈</div><div><p>MODEL ACCURACY <span class="metric-dot">•</span> TEST SET</p><strong id="metric-accuracy">—</strong><span>Correct classifications</span></div></article>
+      <article class="metric"><div class="metric-icon icon-lilac">◎</div><div><p>F1 SCORE <span class="metric-dot">•</span> TEST SET</p><strong id="metric-f1">—</strong><span>Precision & recall balance</span></div></article>
+      <article class="metric"><div class="metric-icon icon-teal">▤</div><div><p>EVALUATED RECORDS</p><strong id="metric-rows">—</strong><span>Held-out customers</span></div></article>
+      <article class="metric"><div class="metric-icon icon-gold">↗</div><div><p>SELECTED CLASSIFIER</p><strong id="metric-model" class="metric-model-name">—</strong><span>Active classifier</span></div></article>
+    </section>
+
+    <div id="quality-advisory" class="quality-advisory" role="note" hidden><span class="advisory-icon">!</span><span><strong>Experimental model</strong> — Accuracy on the separate test dataset is substantially lower than training validation. Predictions are a demonstration and must not be used for automated customer decisions.</span></div>
+
+    <section class="workspace-head" id="predict">
+      <div><span class="section-kicker">WORKSPACE / 01</span><h2>Churn risk predictor</h2><p>Enter customer attributes to generate an individual risk assessment.</p></div>
+      <span class="workspace-label"><span class="online-dot"></span> INTERACTIVE MODEL</span>
+    </section>
+    <div class="workspace">
+      <section class="panel form-panel" aria-labelledby="form-title">
+        <div class="panel-head"><div><div class="panel-title-row"><span class="panel-icon">▦</span><h3 id="form-title">Customer details</h3></div><p>Complete the fields to create a prediction.</p></div><span class="step-pill">01 / INPUT</span></div>
+        <form id="prediction-form">
+          <div class="form-grid">
+            <div class="field"><label for="age">Customer age <span>*</span></label><div class="input-wrap"><input id="age" name="age" type="number" min="18" max="100" step="1" value="30" required/><span class="suffix">years</span></div></div>
+            <div class="field"><label for="gender">Gender <span>*</span></label><select id="gender" name="gender" required><option>Female</option><option>Male</option></select></div>
+            <div class="field"><label for="tenure">Subscription tenure <span>*</span></label><div class="input-wrap"><input id="tenure" name="tenure" type="number" min="0" max="120" step="1" value="12" required/><span class="suffix">months</span></div></div>
+            <div class="field"><label for="usage_frequency">Usage frequency <span>*</span></label><input id="usage_frequency" name="usage_frequency" type="number" min="0" max="365" step="1" value="15" required /></div>
+            <div class="field"><label for="support_calls">Support calls <span>*</span></label><input id="support_calls" name="support_calls" type="number" min="0" max="100" step="1" value="4" required /></div>
+            <div class="field"><label for="payment_delay">Payment delay <span>*</span></label><div class="input-wrap"><input id="payment_delay" name="payment_delay" type="number" min="0" max="365" step="1" value="10" required /><span class="suffix">days</span></div></div>
+            <div class="field"><label for="subscription_type">Subscription plan <span>*</span></label><select id="subscription_type" name="subscription_type" required><option>Basic</option><option selected>Standard</option><option>Premium</option></select></div>
+            <div class="field"><label for="contract_length">Contract length <span>*</span></label><select id="contract_length" name="contract_length" required><option selected>Monthly</option><option>Quarterly</option><option>Annual</option></select></div>
+            <div class="field"><label for="total_spend">Total spend <span>*</span></label><input id="total_spend" name="total_spend" type="number" min="0" max="10000000" step="0.01" value="906" required /></div>
+            <div class="field"><label for="last_interaction">Last interaction <span>*</span></label><div class="input-wrap"><input id="last_interaction" name="last_interaction" type="number" min="0" max="365" step="1" value="9" required /><span class="suffix">days</span></div></div>
+          </div>
+          <div id="form-message" class="form-message" role="alert" aria-live="polite" hidden></div>
+          <div class="form-actions"><button id="submit-btn" class="btn-primary" type="submit"><span>Generate prediction</span><span class="btn-arrow">↗</span></button><button class="btn-quiet" type="button" id="reset-btn">Reset form</button></div>
+        </form>
+      </section>
+
+      <aside class="results-panel">
+        <section class="panel result-card" aria-labelledby="result-title">
+          <div class="panel-head"><div><div class="panel-title-row"><span class="panel-icon panel-icon-purple">◉</span><h3 id="result-title">Prediction result</h3></div><p>Live analysis of customer churn likelihood.</p></div><span class="step-pill">02 / OUTPUT</span></div>
+          <div id="result-empty" class="empty-state"><div class="empty-visual"><span class="empty-inner">◎</span><span class="floating-spark spark-a">✦</span><span class="floating-spark spark-b">✧</span></div><h4>Ready when you are</h4><p>Fill out the customer details and click <strong>Generate prediction</strong> to see the churn probability and risk level.</p></div>
+          <div id="result-content" class="result-content" hidden aria-live="polite">
+            <div class="outcome-line"><span id="outcome-badge" class="outcome-badge"></span><span id="result-timestamp"></span></div>
+            <div class="probability-display"><div id="prob-ring" class="prob-ring"><div class="ring-center"><strong id="prob-label">0%</strong><small>CHURN CHANCE</small></div></div></div>
+            <div class="result-judgment"><div id="risk-chip" class="risk-chip">—</div><h4 id="risk-heading"></h4><p id="risk-description"></p></div>
+            <div class="risk-track"><div class="risk-band band-low">LOW<span>&lt;30%</span></div><div class="risk-band band-med">MEDIUM<span>30–70%</span></div><div class="risk-band band-high">HIGH<span>≥70%</span></div><span id="risk-indicator" class="risk-indicator" style="left:0%"></span></div>
+          </div>
+        </section>
+        <section class="note-card"><div class="note-icon">i</div><div><strong>How to interpret this result</strong><p>Probabilities are model estimates, not certainties. Low (&lt;30%), Medium (30–&lt;70%), and High (≥70%) are configurable business rules, not validated clinical or financial thresholds.</p></div></section>
+      </aside>
+    </div>
+
+    <section class="insights-head" id="insights"><div><span class="section-kicker">WORKSPACE / 02</span><h2>Model insights & activity</h2><p>Explore what matters to the model and review recent prediction outcomes.</p></div></section>
+    <div class="insights-grid">
+      <article class="panel insight-panel"><div class="insight-title"><div><h3>Feature importance</h3><p>Permutation importance on validation data (ROC-AUC decrease)</p></div><span class="insight-label">MODEL EXPLAINABILITY</span></div><div class="chart-holder"><img src="/figures/feature_importance.png" alt="Chart showing the relative importance of the customer features in predictions" loading="lazy" onerror="this.hidden=true;this.nextElementSibling.hidden=false" /><p class="figure-fallback" hidden>Generate this figure with <code>python -m ml.train</code>.</p></div></article>
+      <article class="panel history-panel"><div class="insight-title"><div><h3>Recent predictions</h3><p>Latest API results, without customer attributes</p></div><button id="refresh-btn" class="btn-refresh" type="button" aria-label="Refresh prediction history">↻ Refresh</button></div><div class="history-scroll"><table><thead><tr><th>TIME (UTC)</th><th>PREDICTION</th><th>PROBABILITY</th><th>RISK</th></tr></thead><tbody id="history-body"><tr><td colspan="4" class="history-empty">No predictions yet. Run your first prediction above.</td></tr></tbody></table></div><div id="history-count" class="history-footer">Showing 0 recent predictions</div></article>
+    </div>
+
+    <footer><span><strong>churn</strong>/ml <span class="footer-divider">|</span> Customer Churn Prediction System</span><span>Built with Python · Scikit-learn · FastAPI <span class="footer-divider">|</span> <a href="/docs" target="_blank" rel="noreferrer">Explore API ↗</a></span></footer>
+  </main>
+</body>
+</html>

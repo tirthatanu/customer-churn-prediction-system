@@ -1,0 +1,14 @@
+services:
+  churn-app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      PREDICTION_DB_PATH: /app/runtime/history.sqlite3
+      LOG_LEVEL: INFO
+    volumes:
+      - churn-history:/app/runtime
+    restart: unless-stopped
+
+volumes:
+  churn-history:

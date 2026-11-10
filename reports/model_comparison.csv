@@ -1,0 +1,3 @@
+model,accuracy,precision,recall,f1,roc_auc,brier_score
+Logistic Regression,0.893373,0.923356,0.88548,0.904021,0.959026,0.076363
+HistGradientBoosting,0.999716,0.99996,0.99954,0.99975,1.0,0.000194

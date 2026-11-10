@@ -1,0 +1,167 @@
+{
+  "trained_at_utc": "2026-11-10T04:09:48.767986+00:00",
+  "best_model": "HistGradientBoosting",
+  "selection_metric": "validation_roc_auc",
+  "validation_fraction": 0.2,
+  "random_state": 42,
+  "decision_threshold": 0.5,
+  "risk_thresholds": {
+    "low_below": 0.3,
+    "high_at_or_above": 0.7
+  },
+  "feature_names": [
+    "Age",
+    "Tenure",
+    "Usage Frequency",
+    "Support Calls",
+    "Payment Delay",
+    "Total Spend",
+    "Last Interaction",
+    "Gender",
+    "Subscription Type",
+    "Contract Length"
+  ],
+  "positive_class": 1,
+  "training": {
+    "file": "train.csv",
+    "original_rows": 440833,
+    "usable_rows": 440832,
+    "rows_removed_missing_target": 1,
+    "missing_feature_values": {
+      "Age": 0,
+      "Tenure": 0,
+      "Usage Frequency": 0,
+      "Support Calls": 0,
+      "Payment Delay": 0,
+      "Total Spend": 0,
+      "Last Interaction": 0,
+      "Gender": 0,
+      "Subscription Type": 0,
+      "Contract Length": 0
+    },
+    "churn_counts": {
+      "1": 249999,
+      "0": 190833
+    },
+    "churn_rate": 0.5671071972996515
+  },
+  "testing": {
+    "file": "test.csv",
+    "original_rows": 64374,
+    "usable_rows": 64374,
+    "rows_removed_missing_target": 0,
+    "missing_feature_values": {
+      "Age": 0,
+      "Tenure": 0,
+      "Usage Frequency": 0,
+      "Support Calls": 0,
+      "Payment Delay": 0,
+      "Total Spend": 0,
+      "Last Interaction": 0,
+      "Gender": 0,
+      "Subscription Type": 0,
+      "Contract Length": 0
+    },
+    "churn_counts": {
+      "0": 33881,
+      "1": 30493
+    },
+    "churn_rate": 0.47368502811694163
+  },
+  "validation_results": [
+    {
+      "model": "Logistic Regression",
+      "accuracy": 0.8933728038835392,
+      "precision": 0.9233560658199337,
+      "recall": 0.88548,
+      "f1": 0.9040214805664172,
+      "roc_auc": 0.9590262336573478,
+      "brier_score": 0.07636277866630724
+    },
+    {
+      "model": "HistGradientBoosting",
+      "accuracy": 0.999716447196797,
+      "precision": 0.999959983192941,
+      "recall": 0.99954,
+      "f1": 0.9997499474889727,
+      "roc_auc": 0.9999997327534258,
+      "brier_score": 0.00019396476616009734
+    }
+  ],
+  "selected_validation_result": {
+    "model": "HistGradientBoosting",
+    "accuracy": 0.999716447196797,
+    "precision": 0.999959983192941,
+    "recall": 0.99954,
+    "f1": 0.9997499474889727,
+    "roc_auc": 0.9999997327534258,
+    "brier_score": 0.00019396476616009734
+  },
+  "test_metrics": {
+    "accuracy": 0.5032621865970733,
+    "precision": 0.4881070684404552,
+    "recall": 0.998688223526711,
+    "f1": 0.6557281741545816,
+    "roc_auc": 0.7154681248678674,
+    "brier_score": 0.4962911882214879
+  },
+  "notes": [
+    "CustomerID excluded because it is an identifier.",
+    "Test set was never used to tune or choose a model.",
+    "Predicted probabilities are model estimates, not guaranteed calibrated probabilities.",
+    "Training and supplied test datasets have differing churn prevalence; monitor dataset shift.",
+    "Provided dataset has no stated provenance or representative-population guarantee."
+  ],
+  "feature_importance": [
+    {
+      "feature": "Support Calls",
+      "importance_mean_roc_auc_drop": 0.109465,
+      "importance_std": 0.005165
+    },
+    {
+      "feature": "Total Spend",
+      "importance_mean_roc_auc_drop": 0.065516,
+      "importance_std": 0.001968
+    },
+    {
+      "feature": "Age",
+      "importance_mean_roc_auc_drop": 0.032125,
+      "importance_std": 0.000479
+    },
+    {
+      "feature": "Contract Length",
+      "importance_mean_roc_auc_drop": 0.02704,
+      "importance_std": 0.000883
+    },
+    {
+      "feature": "Payment Delay",
+      "importance_mean_roc_auc_drop": 0.025977,
+      "importance_std": 0.000666
+    },
+    {
+      "feature": "Last Interaction",
+      "importance_mean_roc_auc_drop": 0.007126,
+      "importance_std": 0.000432
+    },
+    {
+      "feature": "Gender",
+      "importance_mean_roc_auc_drop": 0.006233,
+      "importance_std": 0.000737
+    },
+    {
+      "feature": "Tenure",
+      "importance_mean_roc_auc_drop": 0.002654,
+      "importance_std": 0.000181
+    },
+    {
+      "feature": "Usage Frequency",
+      "importance_mean_roc_auc_drop": 0.001577,
+      "importance_std": 0.000147
+    },
+    {
+      "feature": "Subscription Type",
+      "importance_mean_roc_auc_drop": 0.000171,
+      "importance_std": 9e-05
+    }
+  ]
+}

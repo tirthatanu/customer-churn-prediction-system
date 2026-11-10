@@ -1,0 +1,158 @@
+{
+  "train": {
+    "file": "train.csv",
+    "original_rows": 440833,
+    "usable_rows": 440832,
+    "rows_removed_missing_target": 1,
+    "missing_feature_values": {
+      "Age": 0,
+      "Tenure": 0,
+      "Usage Frequency": 0,
+      "Support Calls": 0,
+      "Payment Delay": 0,
+      "Total Spend": 0,
+      "Last Interaction": 0,
+      "Gender": 0,
+      "Subscription Type": 0,
+      "Contract Length": 0
+    },
+    "churn_counts": {
+      "1": 249999,
+      "0": 190833
+    },
+    "churn_rate": 0.5671071972996515
+  },
+  "test": {
+    "file": "test.csv",
+    "original_rows": 64374,
+    "usable_rows": 64374,
+    "rows_removed_missing_target": 0,
+    "missing_feature_values": {
+      "Age": 0,
+      "Tenure": 0,
+      "Usage Frequency": 0,
+      "Support Calls": 0,
+      "Payment Delay": 0,
+      "Total Spend": 0,
+      "Last Interaction": 0,
+      "Gender": 0,
+      "Subscription Type": 0,
+      "Contract Length": 0
+    },
+    "churn_counts": {
+      "0": 33881,
+      "1": 30493
+    },
+    "churn_rate": 0.47368502811694163
+  },
+  "train_dimensions": [
+    440832,
+    12
+  ],
+  "test_dimensions": [
+    64374,
+    12
+  ],
+  "numeric_features": [
+    "Age",
+    "Tenure",
+    "Usage Frequency",
+    "Support Calls",
+    "Payment Delay",
+    "Total Spend",
+    "Last Interaction"
+  ],
+  "categorical_features": [
+    "Gender",
+    "Subscription Type",
+    "Contract Length"
+  ],
+  "training_numeric_summary": {
+    "Age": {
+      "count": 440832.0,
+      "mean": 39.373,
+      "std": 12.442,
+      "min": 18.0,
+      "25%": 29.0,
+      "50%": 39.0,
+      "75%": 48.0,
+      "max": 65.0
+    },
+    "Tenure": {
+      "count": 440832.0,
+      "mean": 31.256,
+      "std": 17.256,
+      "min": 1.0,
+      "25%": 16.0,
+      "50%": 32.0,
+      "75%": 46.0,
+      "max": 60.0
+    },
+    "Usage Frequency": {
+      "count": 440832.0,
+      "mean": 15.807,
+      "std": 8.586,
+      "min": 1.0,
+      "25%": 9.0,
+      "50%": 16.0,
+      "75%": 23.0,
+      "max": 30.0
+    },
+    "Support Calls": {
+      "count": 440832.0,
+      "mean": 3.604,
+      "std": 3.07,
+      "min": 0.0,
+      "25%": 1.0,
+      "50%": 3.0,
+      "75%": 6.0,
+      "max": 10.0
+    },
+    "Payment Delay": {
+      "count": 440832.0,
+      "mean": 12.966,
+      "std": 8.258,
+      "min": 0.0,
+      "25%": 6.0,
+      "50%": 12.0,
+      "75%": 19.0,
+      "max": 30.0
+    },
+    "Total Spend": {
+      "count": 440832.0,
+      "mean": 631.616,
+      "std": 240.803,
+      "min": 100.0,
+      "25%": 480.0,
+      "50%": 661.0,
+      "75%": 830.0,
+      "max": 1000.0
+    },
+    "Last Interaction": {
+      "count": 440832.0,
+      "mean": 14.481,
+      "std": 8.596,
+      "min": 1.0,
+      "25%": 7.0,
+      "50%": 14.0,
+      "75%": 22.0,
+      "max": 30.0
+    }
+  },
+  "train_categorical_counts": {
+    "Gender": {
+      "Male": 250252,
+      "Female": 190580
+    },
+    "Subscription Type": {
+      "Standard": 149128,
+      "Premium": 148678,
+      "Basic": 143026
+    },
+    "Contract Length": {
+      "Annual": 177198,
+      "Quarterly": 176530,
+      "Monthly": 87104
+    }
+  }
+}
